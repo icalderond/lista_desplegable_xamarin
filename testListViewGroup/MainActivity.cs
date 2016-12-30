@@ -9,9 +9,9 @@ namespace testListViewGroup
 	{
 		int count = 1;
 
-		protected override void OnCreate(Bundle savedInstanceState)
+		protected override  void OnCreate( Bundle savedInstanceState)
 		{
-			base.OnCreate(savedInstanceState);
+			base.OnCreate( savedInstanceState);
 
 			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.Main);
@@ -21,6 +21,13 @@ namespace testListViewGroup
 			Button button = FindViewById<Button>(Resource.Id.myButton);
 
 			button.Click += delegate { button.Text = $"{count++} clicks!"; };
+
+			var listView = FindViewById<ExpandableListView>(Resource.Id.myExpandableListview);
+			listView.SetAdapter(new ExpandibleAdapter(this, Data.SampleTarima()));
+
+			listView.ItemSelected += (sender, e) =>
+			{
+			};
 		}
 	}
 }
